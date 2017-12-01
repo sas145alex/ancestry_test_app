@@ -1,0 +1,25 @@
+%p#notice= notice
+
+= link_to 'New Document', new_document_path, class: "btn btn-primary pull-right"
+
+%h1 Documents
+%table.table.table-hover.table-striped
+  %thead
+    %tr
+      %th Name
+      %th Type
+      %th Content
+      %th{:colspan => "3"}
+  %tbody
+    - @documents.each do |document|
+      %tr
+        %td= document.name
+        %td= document.doc_type
+        %td= document.content_file_name
+        %td
+          = link_to_show(document)
+        %td
+          = link_to_edit(edit_document_path(document))
+        %td
+          = link_to_destroy(document)
+%br/

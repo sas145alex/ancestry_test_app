@@ -1,0 +1,20 @@
+%p#notice= notice
+
+%dl.row
+  %dt.col-sm-2
+    Name
+  %dd.col-sm-10
+    = @document.name
+  %dt.col-sm-2
+    doc_type
+  %dd.col-sm-10
+    = @document.doc_type
+  %dt.col-sm-2
+    Content
+  %dd.col-sm-10
+    = link_to_download_file(@document)
+
+%div.mt-3
+  = link_to_edit(edit_document_path(@document))
+  |
+  = link_to (fa_icon 'reply' ,text: 'Back'), documents_path, class: 'btn btn-secondary'

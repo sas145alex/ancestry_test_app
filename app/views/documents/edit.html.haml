@@ -1,0 +1,7 @@
+%h1 Editing Document
+= render 'form', document: @document
+
+%div.mt-3
+  = link_to_show(@document)
+  |
+  = link_to (fa_icon 'reply' ,text: 'Back'), documents_path, class: 'btn btn-secondary'

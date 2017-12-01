@@ -1,0 +1,32 @@
+= form_with(model: person, local: true) do |form|
+  - if person.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(person.errors.count, "error")
+        prohibited this person from being saved:
+      %ul
+        - person.errors.full_messages.each do |message|
+          %li= message
+  .field.form-group
+    = form.label :ln
+    = form.text_field :ln, id: :person_ln, class: 'form-control'
+  .field.form-group
+    = form.label :fn
+    = form.text_field :fn, id: :person_fn, class: 'form-control'
+  .field.form-group
+    = form.label :sn
+    = form.text_field :sn, id: :person_sn, class: 'form-control'
+  .field.form-group
+    = form.label :passport
+    = form.text_field :passport, id: :person_passport, class: 'form-control'
+  .field.form-group
+    = form.label :parent_id
+    = form.select(:parent_id,
+    options_for_select(Person.all_except(form.object).map{|p| ["#{p.initials} id:#{p.id}", p.id]},
+    form.object.parent_id),
+    {include_blank: true}, {class: 'form-control'} )
+  .field.form-group
+    = form.label :avatar
+    = form.file_field :avatar, class: 'form-control-file'
+  .actions
+    = form.submit 'Submit', class: 'btn btn-primary pull-right'

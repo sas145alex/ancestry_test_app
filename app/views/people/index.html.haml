@@ -1,0 +1,31 @@
+%p#notice= notice
+
+= link_to 'New Person', new_person_path, class: 'btn btn-primary pull-right'
+
+%h1 People
+%table.table.table-hover.table-striped
+  %thead
+    %tr
+      %th id
+      %th Ln
+      %th Fn
+      %th Sn
+      %th Passport
+      %th Parent id
+      %th Children ids
+      %th
+  %tbody
+    - @people.each do |person|
+      %tr
+        %td= person.id
+        %td= person.ln
+        %td= person.fn
+        %td= person.sn
+        %td= person.passport
+        %td= person.parent_id
+        %td= person.child_ids
+        %td
+          = link_to_show(person)
+          = link_to_edit(edit_person_path(person))
+          = link_to_destroy(person)
+%br/

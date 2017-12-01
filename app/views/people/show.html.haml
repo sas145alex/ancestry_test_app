@@ -1,0 +1,32 @@
+%p#notice= notice
+
+%div
+  = image_tag @person.avatar.url
+  = image_tag @person.avatar.url(:thumb)
+  = image_tag @person.avatar.url(:medium)
+
+%dl.row
+  %dt.col-sm-2
+    fn
+  %dd.col-sm-10
+    = @person.fn
+
+  %dt.col-sm-2
+    Ln
+  %dd.col-sm-10
+    = @person.ln
+
+  %dt.col-sm-2
+    sn
+  %dd.col-sm-10
+    = @person.sn
+
+  %dt.col-sm-2
+    parent
+  %dd.col-sm-10
+    = print_parent(@person)
+
+%div.mt-3
+  = link_to_edit(edit_person_path(@person))
+  |
+  = link_to (fa_icon 'reply' ,text: 'Back'), people_path, class: 'btn btn-secondary'
